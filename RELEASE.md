@@ -1,7 +1,6 @@
 # Current version (not yet released; still in development)
 
 ## Major Features and Improvements
-
 *   Offered unified CLI for tfx pipeline actions on various orchestrators
     including Apache Airflow, Apache Beam and Kubeflow.
 *   Made model validator executor forward compatible with TFMA change.
@@ -38,6 +37,8 @@
 *   Added experimental support for TFMA fairness indicator thresholds.
 *   Demonstrated DirectRunner multi-core processing in Chicago Taxi example,
     including Airflow and Beam.
+*   Demonstrated multi-core processing in Flink and Spark Chicago Taxi
+    PortableRunner example.
 
 ## Bug fixes and other changes
 *   Bumped test dependency to kfp (Kubeflow Pipelines SDK) to
@@ -47,8 +48,8 @@
 *   Updated Chicago Taxi example dependencies tensorflow-data-validation,
     tensorflow-metadata, tensorflow-model-analysis, tensorflow-serving-api, and
     tensorflow-transform to version >=0.14.
-*   Updated Chicago Taxi example dependencies to Beam 2.14.0, Flink 1.8.1, Spark
-    2.4.3.
+*   Updated Chicago Taxi example dependencies to Beam 2.16.0, Flink 1.8.1, Spark
+    2.4.4.
 *   Adopted new recommended way to access component inputs/outputs as
     `component.outputs['output_name']` (previously, the syntax was
     `component.outputs.output_name`).
@@ -63,9 +64,9 @@
     upgrading procedure.
 *   TFX updated to use `tf.compat.v1` according to the TF 2.0 upgrading
     procedure.
+*   Depended on `apache-beam[gcp]>=2.16,<3`
 
 ### Deprecations
-
 *   Deprecated component_type in favor of type.
 *   Deprecated component_id in favor of id.
 *   Move beam_pipeline_args out of additional_pipeline_args as top level
@@ -74,7 +75,6 @@
     moved to chicago_taxi_pipeline folder.
 
 ## Breaking changes
-
 *   Moved beam setup scripts from examples/chicago_taxi/ to
     examples/chicago_taxi_pipeline/
 *   Moved interactive notebook classes into `tfx.orchestration.experimental`
@@ -92,7 +92,6 @@
 # Version 0.14.0
 
 ## Major Features and Improvements
-
 *   Added support for Google Cloud ML Engine Training and Serving as extension.
 *   Supported pre-split input for ExampleGen components
 *   Added ImportExampleGen component for importing tfrecord files with TF
