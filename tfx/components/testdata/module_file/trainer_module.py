@@ -24,6 +24,7 @@ examples/chicago_taxi/preprocess.py.
 from __future__ import division
 from __future__ import print_function
 
+from kerastuner import HyperParameters
 import tensorflow as tf
 import tensorflow_model_analysis as tfma
 import tensorflow_transform as tft
@@ -236,10 +237,16 @@ def trainer_fn(trainer_fn_args, schema):
       - eval_spec: Spec for eval.
       - eval_input_receiver_fn: Input function for eval.
   """
-  # Number of nodes in the first layer of the DNN
-  first_dnn_layer_size = 100
-  num_dnn_layers = 4
-  dnn_decay_factor = 0.7
+  if trainer_fn_args.hyperparameters:
+    hp = HyperParameters.from_config(trainer_fn_args.hyperparameters)
+    first_dnn_layer_size = hp.get('first_dnn_layer_size')
+    num_dnn_layers = hp.get('num_dnn_layers')
+    dnn_decay_factor = hp.get('dnn_decay_factor')
+  else:
+    # Number of nodes in the first layer of the DNN
+    first_dnn_layer_size = 100
+    num_dnn_layers = 4
+    dnn_decay_factor = 0.7
 
   train_batch_size = 40
   eval_batch_size = 40

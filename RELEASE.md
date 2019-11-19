@@ -18,6 +18,8 @@
     scenarios such as warmstart.
 *   Removed tf.compat.v1 for iris and cifar10 example.
 *   Updated trainer executor to pass through custom config to user module.
+*   Supported hparams artifact as input in Trainer, this is for preparing the
+    tuner support.
 
 ## Bug fixes and other changes
 

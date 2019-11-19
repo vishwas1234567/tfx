@@ -43,6 +43,7 @@ def make_required_test_packages():
   return [
       'apache-airflow>=1.10,<2',
       'docker>=4,<5',
+      'keras-tuner>=1,<2',
       # LINT.IfChange
       'kfp>=0.1.32.2; python_version >= "3.0"',
       # LINT.ThenChange(
