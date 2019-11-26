@@ -18,6 +18,9 @@
     scenarios such as warmstart.
 *   Removed tf.compat.v1 for iris and cifar10 example.
 *   Updated trainer executor to pass through custom config to user module.
+*   Pipelines compiled using KubeflowDagRunner now defaults to using the
+    gRPC-based MLMD server deployed in Kubeflow Pipelines clusters when
+    performing operations on pipeline metadata.
 
 ## Bug fixes and other changes
 
