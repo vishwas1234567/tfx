@@ -84,7 +84,7 @@ class HelloComponent(base_component.BaseComponent):
     # upstream component.
     output_data = output_data or channel_utils.as_channel([
         standard_artifacts.Examples(split=artifact.split)
-        for artifact in input_data.outputs['examples'].get()
+        for artifact in input_data.get()
     ])
 
     spec = HelloComponentSpec(input_data=input_data,

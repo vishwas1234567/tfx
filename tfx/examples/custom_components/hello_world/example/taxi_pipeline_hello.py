@@ -20,9 +20,10 @@ from __future__ import print_function
 
 import os
 from typing import Text
-import absl
 
-from hello_world.hello_component.component import HelloComponent
+import absl
+from hello_component import component
+
 from tfx.components import CsvExampleGen
 from tfx.components import Evaluator
 from tfx.components import ExampleValidator
@@ -72,8 +73,8 @@ def _create_pipeline(pipeline_name: Text, pipeline_root: Text, data_root: Text,
   # Brings data into the pipeline or otherwise joins/converts training data.
   example_gen = CsvExampleGen(input_base=examples)
 
-  hello = HelloComponent(
-      input_data=example_gen.outputs['examples'], name='HelloWorld')
+  hello = component.HelloComponent(
+      input_data=example_gen.outputs['examples'], name=u'HelloWorld')
 
   # Computes statistics over data for visualization and example validation.
   statistics_gen = StatisticsGen(examples=hello.outputs['output_data'])

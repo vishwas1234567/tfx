@@ -21,9 +21,9 @@ from __future__ import print_function
 import os
 from typing import Text
 
+import taxi_pipeline_hello
 import tensorflow as tf
 
-from tfx.examples.custom_components_hello_world import taxi_pipeline_hello
 from tfx.orchestration import metadata
 from tfx.orchestration.beam.beam_dag_runner import BeamDagRunner
 
@@ -37,7 +37,7 @@ class TaxiPipelineHelloEndToEndTest(tf.test.TestCase):
         self._testMethodName)
 
     self._pipeline_name = 'hello_test'
-    self._data_root = os.path.join(os.path.dirname(__file__), 'data', 'simple')
+    self._data_root = os.path.join(os.path.dirname(__file__), '..', 'data')
     self._module_file = os.path.join(os.path.dirname(__file__), 'taxi_utils.py')
     self._serving_model_dir = os.path.join(self._test_dir, 'serving_model')
     self._pipeline_root = os.path.join(self._test_dir, 'tfx', 'pipelines',
@@ -74,8 +74,7 @@ class TaxiPipelineHelloEndToEndTest(tf.test.TestCase):
             module_file=self._module_file,
             serving_model_dir=self._serving_model_dir,
             pipeline_root=self._pipeline_root,
-            metadata_path=self._metadata_path,
-            direct_num_workers=1))
+            metadata_path=self._metadata_path))
 
     self.assertTrue(tf.io.gfile.exists(self._serving_model_dir))
     self.assertTrue(tf.io.gfile.exists(self._metadata_path))
@@ -97,8 +96,7 @@ class TaxiPipelineHelloEndToEndTest(tf.test.TestCase):
             module_file=self._module_file,
             serving_model_dir=self._serving_model_dir,
             pipeline_root=self._pipeline_root,
-            metadata_path=self._metadata_path,
-            direct_num_workers=1))
+            metadata_path=self._metadata_path))
 
     # Assert cache execution.
     with metadata.Metadata(metadata_config) as m:
