@@ -21,7 +21,7 @@ from __future__ import print_function
 from typing import Any, Dict, List, Text
 
 import absl
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import tensorflow_model_analysis as tfma
 
 from google.protobuf import json_format
