@@ -25,7 +25,7 @@ import absl
 import apache_beam as beam
 import numpy as np
 import pyarrow as pa
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import tensorflow_data_validation as tfdv
 import tensorflow_transform as tft
 from tensorflow_transform import impl_helper

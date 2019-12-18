@@ -20,7 +20,7 @@ from __future__ import print_function
 
 import collections
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import yaml
 
 from tfx.tools.cli.container_builder import buildspec
